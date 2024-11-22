@@ -6,7 +6,7 @@ var logging = require('./lib/logging');
 var adminServer = require('./lib/admin-server');
 
 var pluginsLib = require('./lib/plugins');
-var uuid = require('uuid')
+const { v4: uuid } = require('uuid');
 var configService = require('./lib/config');
 var _ = require('lodash');
 
@@ -17,7 +17,7 @@ var _ = require('lodash');
  */
 var Gateway = function (config) {
   assert(config, 'options must contain config')
-  config.uid = uuid.v1()
+  config.uid = uuid()
   configService.init(config);
   logging.init()
   this.plugins = [];
